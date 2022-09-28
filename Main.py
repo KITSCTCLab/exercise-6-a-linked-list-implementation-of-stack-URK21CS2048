@@ -4,43 +4,29 @@ class Node:
     self.next = None
 
 
-class Queue:
+class Stack:
   def __init__(self):
     self.head = None
-    self.last = None
 
-  def enqueue(self, data) -> None:
-    # Write your code here
-    if self.last==None:
-      self.last=Node(data)
-      self.last.next=None
-      self.last.data=data
-      self.head=self.last
-    else:
-      t=Node(data)
-      self.last.next=t
-      t.data=data
-      t.next=None
-      self.last=t
-  def dequeue(self) -> None:
-    # Write your code here
-    t=self.head
-    if self.head==None:
-      return None
-    self.head = t.next
-    if(self.head == None):
-      self.last = None
-  def status(self) -> None:
-    # Write your code here
-    t=self.head
-    if self.head==None and self.last==None:
-      print("None")
-    while(t!=None):
-      print(t.data,end="")
-      print("=>",end="")
-      t=t.next
-      if t==None:
-        print("None")
+  def push(self, data) -> None:
+    nn = Node(data)
+    nn.next = self.head
+    self.head = nn
+
+  def pop(self) -> None:
+    if(self.head!=None):
+      temp = self.head
+      self.head = temp.next
+  def status(self):
+    if(self.head  != None):
+      temp = self.head
+      while temp.next!= None:
+        print(temp.data, end = "")
+        print("=>", end = "")
+        temp = temp.next
+      print(temp.data, end = "=>")
+      
+    print("None")
 
 
 # Do not change the following code
